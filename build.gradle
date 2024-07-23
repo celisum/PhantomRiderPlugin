@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+group 'com.ecocraftkingdoms'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT'
+    implementation 'com.comphenix.protocol:ProtocolLib:5.3.0'
+    implementation 'ca.bkaw:paper-nms:1.20.6-SNAPSHOT'
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'ca.bkaw:paperweight-userdev:1.4.4-LOCAL-SNAPSHOT'
+    }
+}
+
+apply plugin: 'ca.bkaw.paperweight-userdev'
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.release.set(17)
+}
